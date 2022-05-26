@@ -1,13 +1,26 @@
 package autohandel
 
+import grails.converters.JSON
+import grails.converters.XML
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
 class MechanicController {
 
     MechanicService mechanicService
+    MechanicUpdateService mechanicUpdateService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+
+    def apiTest() {
+        render mechanicUpdateService.serviceMethod() as JSON
+    }
+
+    def apiTest2() {
+        render(mechanicUpdateService.genderMethod() as JSON)
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -18,6 +31,7 @@ class MechanicController {
         respond mechanicService.get(id)
     }
 
+    @Secured('ROLE_ADMIN')
     def create() {
         respond new Mechanic(params)
     }

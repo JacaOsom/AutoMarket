@@ -33,6 +33,9 @@ configurations {
 }
 
 dependencies {
+    implementation 'org.grails.plugins:spring-security-ui:4.0.0.M1'
+    implementation 'org.grails.plugins:spring-security-core:5.0.0-RC1'
+    implementation "io.micronaut:micronaut-http-client"
     implementation 'org.grails:grails-datastore-rest-client:6.1.9.RELEASE'
     implementation 'org.grails.plugins:postgresql-extensions:7.0.0'
     developmentOnly("org.springframework.boot:spring-boot-devtools")

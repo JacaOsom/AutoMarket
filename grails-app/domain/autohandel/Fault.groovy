@@ -19,7 +19,7 @@ class Fault implements GormEntity<Fault>{
         valueFault blank: false
         date blank: false
         car blank: false
-        mechanic blank: false
+        mechanic blank: true, nullable: true
         fixed blank: false
     }
 }
